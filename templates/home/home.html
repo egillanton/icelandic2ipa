@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>{{ title  }}</title>
+    {% else %}
+    <title>Icelandic2ipa</title>
+    {% endif %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit-icons.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div class="uk-container">
+    <h1 class="uk-heading-line uk-text-center"><span>Icelandic 2 IPA</span></h1>
+    <h2 class="uk-text-center">Online converter of Icelandic text to IPA phonetic transcription</h2>
+    <form class="uk-margin-small-bottom">
+        <textarea id="icelandicText" class="uk-textarea" placeholder="Place your Icelandic text here" data-gramm_editor="false"></textarea>
+    </form>
+    {% csrf_token %}
+    <button id="transcribeButton" class="uk-button uk-button-primary uk-margin-small-bottom">Transcribe</button>
+    <form class="uk-margin-small-bottom">
+        <textarea id="transcribedText" class="uk-textarea" placeholder="" data-gramm_editor="false" readonly></textarea>
+    </form>
+    <a href="https://github.com/egillanton/icelandic2ipa"><span class="uk-margin-small-right" uk-icon="icon:  github"></span> Source Code</a>
+</div>
+<script src="{% static "js/transcribe.js" %}"></script>
+</body>
+</html>
